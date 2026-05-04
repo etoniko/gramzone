@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <meta name="description" content="Gram Zone — культовая .io игра про бактерий и клеток в стиле Agar.io. Если Gram Zone заблокирован в РФ, играйте в agar.su — официальная альтернатива без ограничений. Пожирай, расти, доминируй!">
-    <meta name="keywords" content="Gram Zone, agar.su, игра про бактерий, agar io, клетки, онлайн игра, .io игры, альтернатива грам зон, заблокирован в РФ">
-    <meta name="author" content="Gram Zone Fan">
-    <meta name="robots" content="index, follow">
-    <title>Gram Zone — игра про бактерий | Официальная альтернатива agar.su</title>
-    <!-- Google Icons (Material Symbols) -->
+    <meta name="description" content="Gram Zone — многопользовательская .io игра про бактерий и клеток. Поглоти других, стань самой большой грам-бактерией в зоне! Аналог Agar.io с уникальным стилем.">
+    <meta name="keywords" content="Gram Zone, игра про бактерий, agar.io, agario, .io игры, многопользовательская игра, клетки, бактерии онлайн">
+    <meta name="author" content="Gram Zone">
+    <meta property="og:title" content="Gram Zone | Игра про бактерий и клеток .io">
+    <meta property="og:description" content="Поглощай клетки, уклоняйся от хищников, стань королём грам-зоны! Аналог Agar.io.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Gram Zone — .io игра про бактерий | Аналог Agar.io</title>
+    <!-- Google Material Icons & Fonts -->
     <link rel="shortcut icon" href="/favicon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0,1" />
-    <!-- Шрифт Inter как в DeepSeek/VK -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -21,32 +23,42 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: linear-gradient(145deg, #eef2ff 0%, #ffffff 100%);
-            color: #1e2a3e;
-            scroll-behavior: smooth;
-        }
-
-        /* сине-белая стилистика как у ВК / DeepSeek */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 1.5rem 2rem;
-        }
-
-        /* header */
-        .header {
-            background: white;
-            border-radius: 32px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.02);
-            backdrop-filter: blur(0px);
-            padding: 1rem 2rem;
-            margin-bottom: 2rem;
+            color: #0a2540;
+            min-height: 100vh;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        /* сине-белая палитра как у VK/DeepSeek */
+        :root {
+            --primary-blue: #1e6fdf;
+            --primary-dark: #0f4c9e;
+            --soft-blue: #e9f0fe;
+            --border-light: #dce5f2;
+            --white: #ffffff;
+            --gray-text: #2c3e50;
+            --accent-glow: #2e7ef0;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            width: 100%;
+        }
+
+        /* хедер */
+        .header {
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            border: 1px solid rgba(0, 100, 255, 0.15);
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
         }
 
         .logo-area {
@@ -55,21 +67,26 @@
             gap: 12px;
         }
 
-        .bacteria-icon {
-            background: #0077ff;
+        .logo-icon {
+            background: var(--primary-blue);
             width: 48px;
             height: 48px;
-            border-radius: 30px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 8px 20px rgba(30, 111, 223, 0.25);
+        }
+
+        .logo-icon span {
+            font-size: 32px;
             color: white;
         }
 
         .logo-text h1 {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #0077ff, #00a3ff);
+            background: linear-gradient(135deg, #1e6fdf, #0f4c9e);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
@@ -77,59 +94,84 @@
         }
 
         .logo-text p {
-            font-size: 0.8rem;
-            color: #546e7a;
+            font-size: 0.85rem;
+            color: #5c6f87;
+            font-weight: 500;
         }
 
-        .badge-blocked {
-            background: #f0f7ff;
-            padding: 0.5rem 1rem;
+        .play-btn-header {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 28px;
             border-radius: 60px;
+            font-weight: 600;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #1e466e;
-            border: 1px solid #cce4ff;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            text-decoration: none;
         }
 
-        /* hero секция */
+        .play-btn-header:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(30, 111, 223, 0.3);
+        }
+
+        /* главная секция */
         .hero {
-            background: white;
-            border-radius: 40px;
-            padding: 2rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e9f0ff;
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
-            align-items: center;
+            margin-bottom: 3rem;
+            background: var(--white);
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-light);
         }
 
-        .hero-left {
+        .hero-text {
             flex: 1.2;
         }
 
-        .hero-left h2 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            background: linear-gradient(130deg, #0070e0, #0095ff);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .hero-text .badge {
+            background: var(--soft-blue);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-blue);
             margin-bottom: 1rem;
         }
 
-        .hero-left .description {
-            font-size: 1.1rem;
-            line-height: 1.4;
-            color: #2c3e50;
-            margin: 1rem 0;
+        .hero-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #0a2540;
         }
 
-        .feature-grid {
+        .highlight {
+            color: var(--primary-blue);
+            border-bottom: 3px solid var(--primary-blue);
+            display: inline-block;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
@@ -137,365 +179,335 @@
         }
 
         .feature-item {
-            background: #f5f9ff;
-            border-radius: 60px;
-            padding: 0.5rem 1.2rem;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: #0066cc;
-        }
-
-        .play-button {
-            background: #0077ff;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 46px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            box-shadow: 0 8px 20px rgba(0, 119, 255, 0.3);
-            margin-top: 0.5rem;
-            text-decoration: none;
-        }
-
-        .play-button:hover {
-            background: #0066dd;
-            transform: scale(1.02);
-            box-shadow: 0 12px 24px rgba(0, 119, 255, 0.4);
-        }
-
-        .hero-right {
-            flex: 0.8;
-            background: linear-gradient(145deg, #d9eaff, #ffffff);
-            border-radius: 32px;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .bacteria-canvas {
-            background: rgba(0,119,255,0.05);
-            border-radius: 28px;
-            padding: 1rem;
-        }
-
-        .bacteria-svg {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* альтернативный блок — agar.su */
-        .alternative-card {
-            background: #ffffffdd;
-            backdrop-filter: blur(2px);
-            border-radius: 32px;
-            border-left: 6px solid #0077ff;
-            background: white;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2.5rem;
-            padding: 1.8rem 2rem;
-            transition: all 0.2s;
-        }
-
-        .alt-title {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            background: #f8fafd;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .feature-item .material-icons {
+            font-size: 20px;
+            color: var(--primary-blue);
+        }
+
+        .hero-image {
+            flex: 0.8;
+            background: radial-gradient(circle at 30% 20%, #d9e9ff, #ffffff);
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            min-height: 220px;
+            position: relative;
+        }
+
+        .bacteria-art {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .cell {
+            background: radial-gradient(circle at 35% 35%, #74b9ff, #1e6fdf);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .cell.small {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 35% 35%, #a0c4ff, #3b82f6);
+        }
+
+        .cell.large {
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle at 35% 35%, #4c9eff, #0a58ca);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* SEO Текст блок */
+        .seo-description {
+            background: var(--white);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .seo-description h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
             font-size: 1.5rem;
-            font-weight: 700;
             margin-bottom: 1rem;
             color: #0a2540;
         }
 
-        .alt-reason {
-            background: #f0f7ff;
-            border-radius: 24px;
-            padding: 1rem 1.5rem;
-            margin: 1.2rem 0;
-            font-weight: 500;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .alert-text {
-            color: #cc5500;
-            font-weight: 600;
-            background: #fff0e5;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-        }
-
-        .agar-button {
-            background: #0a2b44;
-            padding: 12px 28px;
-            border-radius: 40px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-            border: 1px solid #2c6280;
-        }
-
-        .agar-button:hover {
-            background: #004070;
-            transform: translateY(-2px);
-        }
-
-        /* seo контент */
-        .seo-content {
-            background: white;
-            border-radius: 32px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
-            border: 1px solid #eef2ff;
-        }
-
-        .seo-content h3 {
-            font-size: 1.6rem;
+        .seo-description p {
+            line-height: 1.6;
             margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .seo-content p {
-            margin-bottom: 1rem;
-            line-height: 1.5;
             color: #2c3e50;
         }
 
-        .keywords-list {
+        .grid-stats {
             display: flex;
+            gap: 1.5rem;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 1.2rem;
+            margin-top: 1rem;
         }
 
-        .keyword {
-            background: #eef3fc;
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            color: #0050a0;
+        .stat-card {
+            background: var(--soft-blue);
+            border-radius: 1.2rem;
+            padding: 0.8rem 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* footer */
-        .footer {
+        /* секция с главной кнопкой играть на agar.su */
+        .play-section {
+            background: linear-gradient(135deg, #eef2ff, #ffffff);
+            border-radius: 1.8rem;
+            padding: 2rem;
             text-align: center;
-            padding: 2rem 1rem;
-            border-top: 1px solid rgba(0, 100, 255, 0.15);
-            color: #5e7b9c;
-            font-size: 0.8rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
         }
 
+        .play-section h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .play-button-big {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            background: var(--primary-blue);
+            padding: 18px 42px;
+            border-radius: 80px;
+            text-decoration: none;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 1.2rem 0;
+            transition: 0.2s;
+            box-shadow: 0 15px 30px rgba(30,111,223,0.3);
+        }
+
+        .play-button-big:hover {
+            background: #0f4c9e;
+            transform: scale(1.02);
+            box-shadow: 0 20px 35px rgba(30,111,223,0.4);
+        }
+
+        .play-button-big .material-icons {
+            font-size: 32px;
+        }
+
+        .small-note {
+            font-size: 0.85rem;
+            color: #5f7d9c;
+        }
+
+        /* футер */
+        .footer {
+            margin-top: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #5f7d9c;
+        }
+
+        /* адаптив для мобилы */
         @media (max-width: 700px) {
             .container {
                 padding: 1rem;
             }
-            .hero-left h2 {
-                font-size: 1.7rem;
-            }
-            .header {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
             .hero {
                 flex-direction: column;
+                padding: 1.5rem;
             }
-            .play-button {
-                width: 100%;
-                justify-content: center;
+            .hero-text h2 {
+                font-size: 1.8rem;
             }
-            .alt-reason {
-                flex-direction: column;
-                gap: 12px;
-                align-items: flex-start;
+            .logo-text h1 {
+                font-size: 1.4rem;
+            }
+            .play-button-big {
+                padding: 14px 28px;
+                font-size: 1.2rem;
+            }
+            .play-button-big .material-icons {
+                font-size: 26px;
+            }
+            .cell.large {
+                width: 80px;
+                height: 80px;
+            }
+            .cell {
+                width: 60px;
+                height: 60px;
             }
         }
 
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+        button, a {
+            cursor: pointer;
         }
 
-        .btn-icon {
-            font-size: 1.3rem;
+        /* hover effects */
+        .feature-item:hover {
+            background: #e4edfc;
         }
     </style>
 </head>
 <body>
+
 <div class="container">
+    <!-- шапка -->
     <div class="header">
         <div class="logo-area">
-            <div class="bacteria-icon">
-                <span class="material-symbols-outlined">bubble_chart</span>
+            <div class="logo-icon">
+                <span class="material-icons">bubble_chart</span>
             </div>
             <div class="logo-text">
                 <h1>Gram Zone</h1>
-                <p>Агарная битва • .io про бактерий</p>
+                <p>.io игра • бактерии • агарио стиль</p>
             </div>
         </div>
-        <div class="badge-blocked">
-            <span class="material-symbols-outlined" style="font-size: 20px;">gpp_maybe</span>
-            <span>⚠️ Заблокировано на территории РФ (по данным РКН)</span>
-        </div>
+        <a href="https://agar.su" target="_blank" rel="noopener noreferrer" class="play-btn-header">
+            <span class="material-icons">play_arrow</span> Играть на agar.su
+        </a>
     </div>
 
+    <!-- герой с бактериями -->
     <div class="hero">
-        <div class="hero-left">
-            <h2>Пожирай клетки <br> Стань гигантской бактерией</h2>
-            <div class="description">
-                Gram Zone — легендарная .io игра, вдохновлённая Agar.io. Управляй микроорганизмом, поглощай других игроков, уклоняйся от вирусов и становись королём клеток по всему миру. 
-                Режим FFA, командные сражения и атмосфера аркадной био-войны.
+        <div class="hero-text">
+            <div class="badge">⭐ НОВАЯ ЗОНА КЛЕТОЧНЫХ БИТВ</div>
+            <h2>Gram Zone — <span class="highlight">эволюция бактерий</span> в реальном времени</h2>
+            <p>Поглощай частицы, уничтожай конкурентов и стань гигантской грам-бактерией в эпичной .io арене. Уникальная механика, напоминающая классический Agar.io, но с новым стилем и динамикой!</p>
+            <div class="features-list">
+                <div class="feature-item"><span class="material-icons">groups</span> Многопользовательский режим</div>
+                <div class="feature-item"><span class="material-icons">speed</span> Быстрый старт</div>
+                <div class="feature-item"><span class="material-icons">science</span> Бактерии, клетки, вирусы</div>
+                <div class="feature-item"><span class="material-icons">leaderboard</span> Рейтинг игроков</div>
             </div>
-            <div class="feature-grid">
-                <div class="feature-item"><span class="material-symbols-outlined" style="font-size: 18px;">psychology</span> ИИ-боты</div>
-                <div class="feature-item"><span class="material-symbols-outlined" style="font-size: 18px;">groups</span> Мультиплеер</div>
-                <div class="feature-item"><span class="material-symbols-outlined" style="font-size: 18px;">speed</span> Динамичный геймплей</div>
-                <div class="feature-item"><span class="material-symbols-outlined" style="font-size: 18px;">bubble</span> Клетки & вирусы</div>
-            </div>
-            <!-- Кнопка ведет на альтернативу agar.su + месседж о блокировке -->
-            <a href="https://agar.su" target="_blank" rel="noopener noreferrer" class="play-button">
-                <span class="material-symbols-outlined btn-icon">play_arrow</span>
-                Играть
-            </a>
-            <p style="margin-top: 12px; font-size: 0.75rem; color: #5f7f9e;">⚡ Официальный сервер Gram Zone временно недоступен в РФ. Рекомендуем безопасную альтернативу</p>
         </div>
-        <div class="hero-right">
-            <div class="bacteria-canvas">
-                <svg class="bacteria-svg" width="200" height="180" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="100" cy="90" r="65" fill="url(#gradCircle)" stroke="#0077ff" stroke-width="2.5"/>
-                    <circle cx="75" cy="70" r="12" fill="white" stroke="#0077ff" stroke-width="1.5"/>
-                    <circle cx="125" cy="70" r="12" fill="white" stroke="#0077ff" stroke-width="1.5"/>
-                    <circle cx="85" cy="68" r="3" fill="#111"/>
-                    <circle cx="115" cy="68" r="3" fill="#111"/>
-                    <path d="M85 105 Q100 120 115 105" stroke="#0077ff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                    <circle cx="58" cy="100" r="8" fill="#33aaff" fill-opacity="0.6"/>
-                    <circle cx="145" cy="95" r="10" fill="#33aaff" fill-opacity="0.5"/>
-                    <circle cx="140" cy="125" r="6" fill="#00aaff" fill-opacity="0.5"/>
-                    <circle cx="55" cy="130" r="7" fill="#33aaff" fill-opacity="0.5"/>
-                    <defs>
-                        <radialGradient id="gradCircle" cx="30%" cy="30%" r="70%">
-                            <stop offset="0%" stop-color="#a0dcff"/>
-                            <stop offset="100%" stop-color="#3d9eff"/>
-                        </radialGradient>
-                    </defs>
-                </svg>
-                <p style="font-size: 0.8rem; margin-top: 8px;">🍃 Бактерия поглощает всё на своём пути</p>
+        <div class="hero-image">
+            <div class="bacteria-art">
+                <div class="cell small" style="animation-delay: 0s;"></div>
+                <div class="cell" style="animation-delay: 0.3s;"></div>
+                <div class="cell large" style="animation-delay: 0.6s;"></div>
             </div>
         </div>
     </div>
 
-    <!-- АЛЬТЕРНАТИВНЫЙ БЛОК: ПОЧЕМУ agar.su -->
-    <div class="alternative-card">
-        <div class="alt-title">
-            <span class="material-symbols-outlined" style="font-size: 32px; color:#0077ff;">open_in_new</span>
-            <span>Gram Zone заблокирован в РФ → играйте в agar.su</span>
-        </div>
-        <p style="margin-bottom: 12px; font-weight: 400;">С 2022 года доступ к оригинальному домену <strong>Gram Zone</strong> ограничен на территории Российской Федерации из-за мер государственного регулирования (реестр запрещённых сайтов). Мы нашли <strong>абсолютно идентичный геймплей</strong> и ту же механику .io на платформе <strong>agar.su</strong> — надёжном зеркале с низким пингом и активным сообществом.</p>
-        
-        <div class="alt-reason">
-            <div style="display: flex; gap: 12px; align-items: center;">
-                <span class="material-symbols-outlined" style="color:#cc5500;">warning</span>
-                <span><strong>Причина блокировки Gram Zone в РФ:</strong> отсутствие локализации данных, нарушение требований к хранению персональных данных (ФЗ-152). Сервера разработчика находятся вне юрисдикции РФ.</span>
-            </div>
-            <a href="https://agar.su" target="_blank" class="agar-button">
-                <span class="material-symbols-outlined">sports_esports</span> Перейти на agar.su
-            </a>
-        </div>
-        
-        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: center; margin-top: 10px;">
-            <div><span class="material-symbols-outlined" style="vertical-align: middle;">check_circle</span> Полная копия механики Agar.io</div>
-            <div><span class="material-symbols-outlined" style="vertical-align: middle;">speed</span> Низкая задержка для СНГ</div>
-            <div><span class="material-symbols-outlined" style="vertical-align: middle;">diversity_3</span> 5000+ онлайн ежедневно</div>
+    <!-- SEO оптимизированный блок с информацией про Gram Zone и бактерии агарио -->
+    <div class="seo-description">
+        <h3><span class="material-icons">info</span> Что такое Gram Zone?</h3>
+        <p><strong>Gram Zone</strong> — это захватывающая многопользовательская браузерная игра в жанре .io, вдохновлённая механикой Agar.io. Вы управляете бактерией (клеткой) на огромном поле. Ваша цель: поглощать более мелкие клетки и избегать столкновения с крупными. С каждой съеденной частицей ваша грам-бактерия растёт, открывая новые тактические возможности — разделяться, выбрасывать массу для ускорения и устраивать засады.</p>
+        <p>В отличие от классического Agar.io, Gram Zone делает акцент на микроорганизмах и «грам-окрашивании», добавляя визуальную стилистику лабораторных клеточных культур. Идеально для любителей <strong>игр про бактерий</strong>, научной фантастики и динамичных баталий. Соревнуйтесь с тысячами игроков онлайн, становитесь лидером и доминируйте в зоне!</p>
+        <div class="grid-stats">
+            <div class="stat-card"><span class="material-icons">online_prediction</span> Онлайн: 1,200+ игроков</div>
+            <div class="stat-card"><span class="material-icons">device_hub</span> .io сеть</div>
+            <div class="stat-card"><span class="material-icons">sports_esports</span> Бесплатно без скачивания</div>
         </div>
     </div>
 
-    <!-- SEO-текст с ключами, описание бактерий и agar.io -->
-    <div class="seo-content">
-        <h3>Gram Zone и мир .io игр про бактерий и клеток</h3>
-        <p><strong>Gram Zone</strong> — это многопользовательская браузерная игра, выполненная в жанре «пожирай и расти». Вы начинаете с крошечной бактерии, а цель — стать самой крупной клеткой на сервере. Аналог культовой <strong>Agar.io</strong> с уникальной атмосферой и скинами. Однако из-за блокировки Gram Zone в России игроки потеряли прямой доступ.</p>
-        <p>🔵 <strong>Почему agar.su — лучшая альтернатива?</strong> Сайт <a href="https://agar.su" target="_blank" style="color:#0077ff; font-weight:500;">agar.su</a> полностью повторяет механику Gram Zone: здесь такие же правила, визуальные эффекты «клеточного рая», можно играть с друзьями или случайными соперниками. Более того, разработчики agar.su адаптировали сервера под Россию и страны СНГ — игра работает без VPN и стабильно держит соединение.</p>
-        <div class="keywords-list">
-            <span class="keyword">#GramZone</span>
-            <span class="keyword">#игра про бактерий</span>
-            <span class="keyword">#agar.io альтернатива</span>
-            <span class="keyword">#играть в агар су</span>
-            <span class="keyword">#io игры клетки</span>
-            <span class="keyword">#Gram Zone заблокирован</span>
-            <span class="keyword">#бактерии онлайн</span>
-            <span class="keyword">#лучшая замена Gram Zone</span>
-        </div>
-        <div style="margin-top: 20px; background: #eef4ff; border-radius: 24px; padding: 16px;">
-            <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
-                <span class="material-symbols-outlined" style="font-size: 38px;">stadia_controller</span>
-                <div><strong>👉 Рекомендация от комьюнити:</strong> Если вы любили Gram Zone, то agar.su подарит те же эмоции — динамичные бои, разделение клеток, выбрасывание массы и тактику. Не нужно скачивать — играйте в браузере на ПК и телефоне.</div>
+    <!-- Главный рекламный блок: ссылка играть в agar.su (как просили) -->
+    <div class="play-section">
+        <span class="material-icons" style="font-size: 48px; color: #1e6fdf;">stadia_controller</span>
+        <h3>Присоединяйся к битве клеток!</h3>
+        <p>Запусти Gram Zone и другие режимы на <strong>agar.su</strong> — топовом портале .io игр про агарио, клетки и бактерий. Мгновенный вход без регистрации.</p>
+        <a href="https://agar.su" target="_blank" rel="noopener noreferrer" class="play-button-big">
+            <span class="material-icons">play_circle_filled</span> ИГРАТЬ НА AGAR.SU
+        </a>
+        <div class="small-note">🎮 Полный доступ ко всем режимам: классика, командная игра, режим бактерий. Лучший сервер agar.io аналогов.</div>
+    </div>
+
+    <!-- дополнительный блок с ключевыми словами и ссылкой для SEO -->
+    <div style="background: #ffffff; border-radius: 1.5rem; padding: 1.5rem; border: 1px solid #e6edf4; margin-bottom: 1rem;">
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;">
+            <div>
+                <h4 style="display: flex; gap: 6px; align-items: center;"><span class="material-icons" style="color:#1e6fdf;">search</span> Популярные запросы:</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px;">
+                    <span style="background:#eef2ff; padding:4px 12px; border-radius: 30px;">Gram Zone игра</span>
+                    <span style="background:#eef2ff; padding:4px 12px; border-radius: 30px;">игра бактерии онлайн</span>
+                    <span style="background:#eef2ff; padding:4px 12px; border-radius: 30px;">agar.io бесплатно</span>
+                    <span style="background:#eef2ff; padding:4px 12px; border-radius: 30px;">аналог agario</span>
+                    <span style="background:#eef2ff; padding:4px 12px; border-radius: 30px;">клеточная битва .io</span>
+                </div>
+            </div>
+            <div>
+                <a href="https://agar.su" style="display: flex; align-items: center; gap: 8px; background: none; border: 1px solid var(--primary-blue); padding: 8px 20px; border-radius: 40px; text-decoration: none; color: var(--primary-blue); font-weight: 500;">
+                    <span class="material-icons">open_in_new</span> agar.su
+                </a>
             </div>
         </div>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: #5d6e85;">Gram Zone — новый взгляд на жанр .io про микроорганизмы. Играйте на одном из лучших сайтов-агрегаторов agar.su, где собраны десятки модов: команды, хаос, зомби-режим. Абсолютно бесплатно, работает на ПК и телефонах.</p>
     </div>
 
-    <div style="background: white; border-radius: 28px; padding: 1.5rem; margin-bottom: 2rem; border:1px solid #eef2ff;">
-        <h3 style="display: flex; gap: 8px; align-items: center;"><span class="material-symbols-outlined">touch_app</span> Мобильная версия и ПК интерфейс</h3>
-        <p>Адаптивный дизайн позволяет наслаждаться Gram Zone и agar.su на любом устройстве: смартфоны, планшеты, десктоп. Управление через мышь или тач — просто ведите пальцем/курсором, чтобы перемещать бактерию. Полная кроссплатформенность. <strong>Рекомендуем играть в agar.su прямо сейчас, обходя блокировки без лишних настроек.</strong></p>
-        <div class="feature-grid" style="margin-top: 10px;">
-            <div class="feature-item"><span class="material-symbols-outlined">computer</span> Удобное ПК управление</div>
-            <div class="feature-item"><span class="material-symbols-outlined">smartphone</span> Сенсорное управление</div>
-            <div class="feature-item"><span class="material-symbols-outlined">public</span> Международные сервера</div>
+    <!-- инструкция + немного про грам-бактерий -->
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 0.5rem;">
+        <div style="flex: 1; background: white; border-radius: 1.2rem; padding: 1.3rem; border: 1px solid #e6edf4;">
+            <span class="material-icons" style="background: #eef2ff; padding: 8px; border-radius: 60px;">tips_and_updates</span>
+            <h4 style="margin: 12px 0 8px;">Как играть в Gram Zone?</h4>
+            <p style="font-size: 0.9rem;">Управление мышью или пальцем — двигайте курсор, чтобы направлять клетку. Кнопка "Пробел" или касание разделяет клетку для атаки. Поедайте цветные точки и меньшие бактерии, избегайте врагов. Коллекционируйте массу, чтобы оказаться в топе.</p>
         </div>
-    </div>
-
-    <!-- ПОЧЕМУ ССЫЛКА НА AGAR.SU + clear seo -->
-    <div class="alternative-card" style="background: linear-gradient(120deg, #ffffff, #f4faff);">
-        <div class="alt-title">
-            <span class="material-symbols-outlined" style="color:#2080f0;">link</span>
-            <span>Официальная причина: играть в agar.su вместо Gram Zone</span>
+        <div style="flex: 1; background: white; border-radius: 1.2rem; padding: 1.3rem; border: 1px solid #e6edf4;">
+            <span class="material-icons" style="background: #eef2ff; padding: 8px; border-radius: 60px;">bioscience</span>
+            <h4 style="margin: 12px 0 8px;">Почему бактерии и Gram зона?</h4>
+            <p style="font-size: 0.9rem;">Особая концепция «грам-положительных» и «грам-отрицательных» клеток привносит элемент стратегии. Крупные зоны дают бонусы к скорости. Инновационная система деления на подзоны улучшает классический Agar.io опыт.</p>
         </div>
-        <ul style="margin-left: 1.5rem; display: flex; flex-direction: column; gap: 10px;">
-            <li>✅ <strong>Gram Zone заблокирован в РФ</strong> — по решению Роскомнадзора (основание: распространение незарегистрированной информации и отказ от локализации данных).</li>
-            <li>✅ <strong>agar.su функционирует легально</strong> и не имеет ограничений на территории РФ. Все игровые механики идентичны Gram Zone: поглощение, деление, вирусы, рейтинг.</li>
-            <li>✅ <strong>Прямая ссылка на игру</strong> — единственный способ быстро продолжить играть без VPN и сложных манипуляций. Сообщество agar.su приветствует бывших фанатов Gram Zone.</li>
-        </ul>
-        <div style="margin-top: 20px; background:#e5efff; border-radius: 30px; padding: 1rem; text-align: center;">
-            <span class="material-symbols-outlined" style="vertical-align: middle;">open_in_browser</span> 
-            <strong>Начать игру мгновенно: </strong>
-            <a href="https://agar.su" target="_blank" style="font-weight: 700; color: #0066cb;">https://agar.su</a> — захвати топ лидерборда прямо сейчас!
+        <div style="flex: 1; background: white; border-radius: 1.2rem; padding: 1.3rem; border: 1px solid #e6edf4;">
+            <span class="material-icons" style="background: #eef2ff; padding: 8px; border-radius: 60px;">devices</span>
+            <h4 style="margin: 12px 0 8px;">Мобильная версия & ПК</h4>
+            <p style="font-size: 0.9rem;">Полная адаптация под смартфоны, планшеты и десктоп. Играйте в Gram Zone где угодно — достаточно перейти на agar.su, моментальный доступ без установки.</p>
         </div>
     </div>
 
     <div class="footer">
-        <p>© 2025 Gram Zone Fan Page. Информационный сайт с целью продвижения альтернативной платформы agar.su. Gram Zone является товарным знаком. В связи с блокировкой официального сайта Gram Zone в РФ, мы рекомендуем посещать agar.su — полную копию геймплея клеточной аркады.</p>
-        <p style="margin-top: 10px;"><span class="material-symbols-outlined" style="font-size: 14px;">info</span> SEO оптимизация: игра бактерии, agar.io, альтернатива, грам зона онлайн.</p>
+        <div>© Gram Zone — неофициальный фанатский проект, посвящённый игре про бактерий. Лучшая реклама agar.su — главная площадка для настоящих битв клеток.</div>
+        <div>
+            <span class="material-icons" style="font-size: 16px; vertical-align: middle;">sports_esports</span> 
+            <a href="https://agar.su" style="color: #1e6fdf; text-decoration: none; font-weight: 500;" target="_blank"> agar.su — играть сейчас</a>
+        </div>
     </div>
 </div>
-<!-- микро-разметка seo schema (необязательная, но улучшает) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "VideoGame",
-  "name": "Gram Zone",
-  "alternateName": "Agar.io альтернатива",
-  "description": "Gram Zone – многопользовательская игра про бактерий и клеток в стиле Agar.io. В связи с блокировкой в РФ рекомендуем играть на agar.su",
-  "gamePlatform": ["PC", "Mobile Browser", "Web"],
-  "operatingSystem": "All",
-  "applicationCategory": "Game",
-  "url": "https://agar.su",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "RUB"
-  }
-}
+
+<!-- необязательный микро-JS для клика (пользовательский комфорт) -->
+<script>
+    // просто добавляем плавный скролл и возможно дополнительные метрики, но основное функциональное - ссылки на agar.su
+    // декоративно: при нажатии на кнопки с классом play-btn-header или play-button-big - ведут на agar.su - уже реализовано.
+    // дополнительно можно подтверждение для аналитики, но не обязательно.
+    console.log("Gram Zone SEO | Промо agar.su — играйте в .io битвы бактерий");
 </script>
 </body>
 </html>
